@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 
-namespace CleanArchitectureCQRS.Infrastructure.Logging;
+namespace SaveMe.Infrastructure.Logging;
 
 internal static class Extensions
 {

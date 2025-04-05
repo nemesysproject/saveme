@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Shared.Abstractions.Exceptions;
+using SaveMe.Shared.Abstractions.Exceptions;
 
-namespace CleanArchitectureCQRS.Domain.Exceptions;
+namespace SaveMe.Domain.Exceptions;
 
     public class SampleInvalidException : PublicException
     {

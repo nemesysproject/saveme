@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Application.Exceptions;
-using CleanArchitectureCQRS.Domain.Repositories;
-using CleanArchitectureCQRS.Domain.ValueObjects;
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
+using SaveMe.Application.Exceptions;
+using SaveMe.Domain.Repositories;
+using SaveMe.Domain.ValueObjects;
+using SaveMe.Shared.Abstractions.Commands;
 
-namespace CleanArchitectureCQRS.Application.Commands.Handlers;
+namespace SaveMe.Application.Commands.Handlers;
 
 internal sealed class AddSampleEntityItemHandler : ICommandHandler<AddSampleEntityItem>
 {

@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Domain.Factories;
-using CleanArchitectureCQRS.Domain.Policies;
-using CleanArchitectureCQRS.Shared.Commands;
+using SaveMe.Domain.Factories;
+using SaveMe.Domain.Policies;
+using SaveMe.Shared.Commands;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Application;
+namespace SaveMe.Application;
 
 public static class Extensions
 {

@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Infrastructure.Services;
+namespace SaveMe.Infrastructure.Services;
 
 public class ExternalService
 {

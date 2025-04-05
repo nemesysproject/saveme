@@ -22,7 +22,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitectureCQRS.Domain\CleanArchitectureCQRS.Domain.csproj" />
-    <ProjectReference Include="..\CleanArchitectureCQRS.Application\CleanArchitectureCQRS.Application.csproj" />
+    <ProjectReference Include="..\CleanArchitectureCQRS.Domain\SaveMe.Domain.csproj" />
+    <ProjectReference Include="..\CleanArchitectureCQRS.Application\SaveMe.Application.csproj" />
   </ItemGroup>
 </Project>

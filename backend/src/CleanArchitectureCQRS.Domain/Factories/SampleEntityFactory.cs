@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Domain.Consts;
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.Policies;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.Consts;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.Policies;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Factories;
+namespace SaveMe.Domain.Factories;
 
     public sealed class SampleEntityFactory : ISampleEntityFactory
     {

@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Shared.Abstractions.Queries;
+namespace SaveMe.Shared.Abstractions.Queries;
 
     public interface IQueryDispatcher
     {

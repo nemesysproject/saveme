@@ -1,7 +1,7 @@
-using CleanArchitectureCQRS.Application.DTOs;
-using CleanArchitectureCQRS.Infrastructure.EF.Models;
+using SaveMe.Application.DTOs;
+using SaveMe.Infrastructure.EF.Models;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Queries;
+namespace SaveMe.Infrastructure.EF.Queries;
 
 internal static class Extensions
 {

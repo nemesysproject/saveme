@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Infrastructure.EF.Models;
+namespace SaveMe.Infrastructure.EF.Models;
 
 internal class SampleEntityItemReadModel
 {

@@ -1,5 +1,5 @@
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
+using SaveMe.Shared.Abstractions.Commands;
 
-namespace CleanArchitectureCQRS.Application.Commands;
+namespace SaveMe.Application.Commands;
 
 public record TakeItem(Guid sampleEntityId, string Name) : ICommand;

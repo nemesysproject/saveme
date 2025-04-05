@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Application.Services;
-using CleanArchitectureCQRS.Infrastructure.EF.Contexts;
-using CleanArchitectureCQRS.Infrastructure.EF.Models;
+using SaveMe.Application.Services;
+using SaveMe.Infrastructure.EF.Contexts;
+using SaveMe.Infrastructure.EF.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Services;
+namespace SaveMe.Infrastructure.EF.Services;
 
 internal sealed class SampleEntityReadService : ISampleEntityReadService
 {

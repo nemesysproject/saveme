@@ -1,12 +1,12 @@
-using CleanArchitectureCQRS.Application.DTOs;
-using CleanArchitectureCQRS.Application.Queries;
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Infrastructure.EF.Contexts;
-using CleanArchitectureCQRS.Infrastructure.EF.Models;
-using CleanArchitectureCQRS.Shared.Abstractions.Queries;
+using SaveMe.Application.DTOs;
+using SaveMe.Application.Queries;
+using SaveMe.Domain.Entities;
+using SaveMe.Infrastructure.EF.Contexts;
+using SaveMe.Infrastructure.EF.Models;
+using SaveMe.Shared.Abstractions.Queries;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Queries.Handlers;
+namespace SaveMe.Infrastructure.EF.Queries.Handlers;
 
 internal sealed class GetSampleEntityHandler : IQueryHandler<GetSampleEntity, SampleEntityDto>
 {

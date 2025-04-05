@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Shared.Exceptions;
-using CleanArchitectureCQRS.Shared.Services;
+using SaveMe.Shared.Exceptions;
+using SaveMe.Shared.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Shared;
+namespace SaveMe.Shared;
 
     public static class Extensions
     {

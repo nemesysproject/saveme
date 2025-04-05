@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Shared.Abstractions.Domains;
+namespace SaveMe.Shared.Abstractions.Domains;
 
 public interface IDomainEvent
 {

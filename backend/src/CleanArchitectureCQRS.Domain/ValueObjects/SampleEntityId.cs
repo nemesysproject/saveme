@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Domain.Exceptions;
+using SaveMe.Domain.Exceptions;
 
-namespace CleanArchitectureCQRS.Domain.ValueObjects;
+namespace SaveMe.Domain.ValueObjects;
 
     public record SampleEntityId
     {

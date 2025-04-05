@@ -1,8 +1,8 @@
-using CleanArchitectureCQRS.Application.Exceptions;
-using CleanArchitectureCQRS.Domain.Repositories;
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
+using SaveMe.Application.Exceptions;
+using SaveMe.Domain.Repositories;
+using SaveMe.Shared.Abstractions.Commands;
 
-namespace CleanArchitectureCQRS.Application.Commands.Handlers;
+namespace SaveMe.Application.Commands.Handlers;
 
 internal sealed class RemoveSampleEntityItemHandler : ICommandHandler<RemoveSampleEntityItem>
 {

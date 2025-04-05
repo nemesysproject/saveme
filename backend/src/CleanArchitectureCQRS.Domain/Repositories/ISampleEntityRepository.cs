@@ -1,7 +1,7 @@
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Repositories;
+namespace SaveMe.Domain.Repositories;
 
     public interface ISampleEntityRepository
     {

@@ -1,8 +1,8 @@
-using CleanArchitectureCQRS.Infrastructure.EF.Models;
+using SaveMe.Infrastructure.EF.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Config;
+namespace SaveMe.Infrastructure.EF.Config;
 
     internal sealed class ReadConfiguration : IEntityTypeConfiguration<SampleEntityReadModel>, IEntityTypeConfiguration<SampleEntityItemReadModel>
     {

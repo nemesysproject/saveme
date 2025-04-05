@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace CleanArchitectureCQRS.Shared.Options;
+namespace SaveMe.Shared.Options;
 
     public static class Extensions
     {

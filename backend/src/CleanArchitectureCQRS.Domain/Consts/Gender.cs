@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Domain.Consts;
+namespace SaveMe.Domain.Consts;
 
     public enum Gender
     {

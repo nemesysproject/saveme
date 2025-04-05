@@ -1,12 +1,12 @@
-using CleanArchitectureCQRS.Infrastructure.EF;
-using CleanArchitectureCQRS.Infrastructure.Logging;
-using CleanArchitectureCQRS.Infrastructure.Services;
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
-using CleanArchitectureCQRS.Shared.Queries;
+using SaveMe.Infrastructure.EF;
+using SaveMe.Infrastructure.Logging;
+using SaveMe.Infrastructure.Services;
+using SaveMe.Shared.Abstractions.Commands;
+using SaveMe.Shared.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Infrastructure;
+namespace SaveMe.Infrastructure;
 
 public static class Extensions
 {

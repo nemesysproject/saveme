@@ -1,15 +1,15 @@
-using CleanArchitectureCQRS.Application.Services;
-using CleanArchitectureCQRS.Domain.Repositories;
-using CleanArchitectureCQRS.Infrastructure.EF.Contexts;
-using CleanArchitectureCQRS.Infrastructure.EF.Options;
-using CleanArchitectureCQRS.Infrastructure.EF.Repositories;
-using CleanArchitectureCQRS.Infrastructure.EF.Services;
-using CleanArchitectureCQRS.Shared.Options;
+using SaveMe.Application.Services;
+using SaveMe.Domain.Repositories;
+using SaveMe.Infrastructure.EF.Contexts;
+using SaveMe.Infrastructure.EF.Options;
+using SaveMe.Infrastructure.EF.Repositories;
+using SaveMe.Infrastructure.EF.Services;
+using SaveMe.Shared.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF;
+namespace SaveMe.Infrastructure.EF;
 
 internal static class Extensions
 {
@@ -19,11 +19,28 @@ internal static class Extensions
         services.AddScoped<ISampleEntityReadService, SampleEntityReadService>();
 
         var options = configuration.GetOptions<DataBaseOptions>("DataBaseConnectionString");
-        services.AddDbContext<ReadDbContext>(ctx =>
-        ctx.UseSqlServer(options.ConnectionString));
-
-        services.AddDbContext<WriteDbContext>(ctx =>
+        
+        if (options.DataBaseType == "SQLServer") // Define el tipo de base de datos en configuración
+        {
+            // SQL Server
+            services.AddDbContext<ReadDbContext>(ctx =>
             ctx.UseSqlServer(options.ConnectionString));
+
+            services.AddDbContext<WriteDbContext>(ctx =>
+                ctx.UseSqlServer(options.ConnectionString));
+            // SQL Server
+        }
+        else
+        {
+            // PostgreSQL
+
+            services.AddDbContext<ReadDbContext>(ctx =>
+            ctx.UseNpgsql(options.PostgreSqlConnection));
+
+            services.AddDbContext<WriteDbContext>(ctx =>
+                ctx.UseNpgsql(options.PostgreSqlConnection));
+            // PostgreSQL
+        }
 
         return services;
     }

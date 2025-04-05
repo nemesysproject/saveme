@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitectureCQRS.Api.Controllers;
+namespace SaveMe.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

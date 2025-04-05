@@ -1,8 +1,8 @@
-using CleanArchitectureCQRS.Domain.Consts;
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.Consts;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Factories;
+namespace SaveMe.Domain.Factories;
 
     public interface ISampleEntityFactory
     {

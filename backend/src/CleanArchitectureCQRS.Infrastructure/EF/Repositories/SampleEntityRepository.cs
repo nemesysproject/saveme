@@ -1,10 +1,10 @@
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.Repositories;
-using CleanArchitectureCQRS.Domain.ValueObjects;
-using CleanArchitectureCQRS.Infrastructure.EF.Contexts;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.Repositories;
+using SaveMe.Domain.ValueObjects;
+using SaveMe.Infrastructure.EF.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Repositories;
+namespace SaveMe.Infrastructure.EF.Repositories;
 
 internal sealed class SampleEntityRepository : ISampleEntityRepository
 {

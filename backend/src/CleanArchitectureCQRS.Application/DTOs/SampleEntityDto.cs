@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Application.DTOs;
+namespace SaveMe.Application.DTOs;
 
 public record SampleEntityDto(Guid Id,
                               string Name,

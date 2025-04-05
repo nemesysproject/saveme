@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Application;
-using CleanArchitectureCQRS.Infrastructure;
-using CleanArchitectureCQRS.Shared;
+using SaveMe.Application;
+using SaveMe.Infrastructure;
+using SaveMe.Shared;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

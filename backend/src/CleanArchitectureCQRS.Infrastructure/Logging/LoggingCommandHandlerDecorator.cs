@@ -1,7 +1,7 @@
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
+using SaveMe.Shared.Abstractions.Commands;
 using Microsoft.Extensions.Logging;
 
-namespace CleanArchitectureCQRS.Infrastructure.Logging;
+namespace SaveMe.Infrastructure.Logging;
 
 internal sealed class LoggingCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand> where TCommand : class, ICommand
 {

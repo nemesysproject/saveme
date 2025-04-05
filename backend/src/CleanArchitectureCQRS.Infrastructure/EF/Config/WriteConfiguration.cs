@@ -1,10 +1,10 @@
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Config;
+namespace SaveMe.Infrastructure.EF.Config;
 
 internal sealed class WriteConfiguration : IEntityTypeConfiguration<SampleEntity>, IEntityTypeConfiguration<SampleEntityItem>
 {

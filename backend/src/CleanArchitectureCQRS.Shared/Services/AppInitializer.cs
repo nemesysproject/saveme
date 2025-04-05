@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CleanArchitectureCQRS.Shared.Services;
+namespace SaveMe.Shared.Services;
 
 internal sealed class AppInitializer : IHostedService
 {

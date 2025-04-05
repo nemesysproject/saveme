@@ -4,62 +4,62 @@
 /*==============================================================*/
 
 
-DROP INDEX IF EXISTS pets.LOCAALIZATIONHISTORY_FK;
+DROP INDEX IF EXISTS pets.LOCAALIZATIONHISTORY_FK CASCADE;
 
-DROP INDEX IF EXISTS pets.PICTUREPLACES_FK;
+DROP  INDEX IF EXISTS pets.PICTUREPLACES_FK CASCADE;
 
-DROP INDEX IF EXISTS pets.HISTORY_PLACE_PK;
+DROP  INDEX IF EXISTS pets.HISTORY_PLACE_PK CASCADE;
 
-DROP TABLE IF EXISTS pets.HISTORY_PLACE;
+DROP  TABLE IF EXISTS pets.HISTORY_PLACE CASCADE;
 
-DROP INDEX IF EXISTS medias.MEDIATYPE_PK;
+DROP  INDEX IF EXISTS medias.MEDIATYPE_PK CASCADE;
 
-DROP TABLE IF EXISTS medias.MEDIATYPE;
+DROP  TABLE IF EXISTS medias.MEDIATYPE CASCADE;
 
-DROP INDEX IF EXISTS pets.PET_STATES_FK;
+DROP  INDEX IF EXISTS pets.PET_STATES_FK CASCADE;
 
-DROP INDEX IF EXISTS pets.PET_PK;
+DROP  INDEX IF EXISTS pets.PET_PK CASCADE;
 
-DROP TABLE IF EXISTS pets.PET;
+DROP  TABLE IF EXISTS pets.PET CASCADE;
 
-DROP INDEX IF EXISTS medias.MEDIATYPES_FK;
+DROP  INDEX IF EXISTS medias.MEDIATYPES_FK CASCADE;
 
-DROP INDEX IF EXISTS medias.PETPICTURES_FK;
+DROP  INDEX IF EXISTS medias.PETPICTURES_FK CASCADE;
 
-DROP INDEX IF EXISTS medias.PET_MEDIA_PK;
+DROP  INDEX IF EXISTS medias.PET_MEDIA_PK CASCADE;
 
-DROP TABLE IF EXISTS medias.PET_MEDIA;
+DROP  TABLE IF EXISTS medias.PET_MEDIA CASCADE;
 
-DROP INDEX IF EXISTS pets.PETRELATIONSHELTERS_FK;
+DROP  INDEX IF EXISTS pets.PETRELATIONSHELTERS_FK CASCADE;
 
-DROP INDEX IF EXISTS pets.PET_SHELTERS_PK;
+DROP  INDEX IF EXISTS pets.PET_SHELTERS_PK CASCADE;
 
-DROP TABLE IF EXISTS pets.PET_SHELTERS;
+DROP  TABLE IF EXISTS pets.PET_SHELTERS CASCADE;
 
-DROP INDEX IF EXISTS PET_STATUS_PK;
+DROP  INDEX IF EXISTS PET_STATUS_PK CASCADE;
 
-DROP TABLE IF EXISTS pets.PET_STATUS;
+DROP  TABLE IF EXISTS pets.PET_STATUS CASCADE;
 
-DROP INDEX IF EXISTS pets.SHELTER_PK;
+DROP  INDEX IF EXISTS pets.SHELTER_PK CASCADE;
 
-DROP TABLE IF EXISTS pets.SHELTER;
+DROP  TABLE IF EXISTS pets.SHELTER CASCADE;
 
-DROP INDEX IF EXISTS users.USER_PK;
+DROP  INDEX IF EXISTS users.USER_PK CASCADE;
 
-DROP TABLE IF EXISTS "USER";
+DROP  TABLE IF EXISTS APP_USER CASCADE;
 
-DROP INDEX IF EXISTS users.PETRELATIONUSERS_FK;
+DROP  INDEX IF EXISTS users.PETRELATIONUSERS_FK CASCADE;
 
-DROP INDEX IF EXISTS users.USER_PETSREGISTER_PK;
+DROP  INDEX IF EXISTS users.USER_PETSREGISTER_PK CASCADE;
 
-DROP TABLE IF EXISTS users.USER_PETSREGISTER;
+DROP  TABLE IF EXISTS users.USER_PETSREGISTER CASCADE;
 
 /*==============================================================*/
 /* Table: pets.HISTORY_PLACE                                         */
 /*==============================================================*/
 create table pets.HISTORY_PLACE (
    IDPLACE              SERIAL               not null,
-   IDPETMEDIA           INT2                 null,
+   IDPETMEDIA           INTEGER                 null,
    IDUSER               VARCHAR(50)          null,
    PETID                VARCHAR(50)          null,
    GEOLOCATION          VARCHAR(255)         null,
@@ -93,7 +93,7 @@ PETID
 /* Table: medias.MEDIATYPE                                             */
 /*==============================================================*/
 create table medias.MEDIATYPE (
-   IDMEDIA              INT2                 not null,
+   IDMEDIA              INTEGER                 not null,
    DESCRIPTION          VARCHAR(255)         null,
    constraint PK_MEDIATYPE primary key (IDMEDIA)
 );
@@ -117,7 +117,7 @@ IDMEDIA
 /*==============================================================*/
 create table pets.PET (
    PETID                VARCHAR(50)          not null,
-   IDSTATUS             INT2                 null,
+   IDSTATUS             INTEGER                 null,
    ALIAS                VARCHAR(255)         null,
    OBSERVATION          TEXT                 null,
    RECORDDATE           DATE                 null,
@@ -144,9 +144,9 @@ IDSTATUS
 /* Table: medias.PET_MEDIA                                             */
 /*==============================================================*/
 create table medias.PET_MEDIA (
-   IDPETMEDIA           INT2                 not null,
+   IDPETMEDIA           INTEGER                 not null,
    PETID                VARCHAR(50)          null,
-   IDMEDIA              INT2                 null,
+   IDMEDIA              INTEGER                 null,
    RECORDDATE           DATE                 null,
    PICTURE              CHAR(254)            null,
    constraint PK_PET_MEDIA primary key (IDPETMEDIA)
@@ -177,7 +177,7 @@ IDMEDIA
 /* Table: pets.PET_SHELTERS                                          */
 /*==============================================================*/
 create table pets.PET_SHELTERS (
-   IDSHELTER            INT2                 not null,
+   IDSHELTER            INTEGER                 not null,
    PETID                VARCHAR(50)          not null,
    CECKINGDATE          DATE                 null,
    CHECOUTDATE          DATE                 null,
@@ -203,7 +203,7 @@ PETID
 /* Table: pets.PET_STATUS                                            */
 /*==============================================================*/
 create table pets.PET_STATUS (
-   IDSTATUS             INT2                 not null,
+   IDSTATUS             INTEGER                 not null,
    DESCRIPTION          VARCHAR(100)         null,
    ACTIVE               BOOL                 null,
    constraint PK_PET_STATUS primary key (IDSTATUS)

@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.ValueObjects;
-using CleanArchitectureCQRS.Infrastructure.EF.Config;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.ValueObjects;
+using SaveMe.Infrastructure.EF.Config;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Contexts;
+namespace SaveMe.Infrastructure.EF.Contexts;
 
 internal sealed class WriteDbContext : DbContext
 {

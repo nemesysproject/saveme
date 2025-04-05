@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Policies;
+namespace SaveMe.Domain.Policies;
 
     public interface ISampleEntityItemsPolicy
     {

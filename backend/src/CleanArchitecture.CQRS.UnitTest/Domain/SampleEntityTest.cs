@@ -1,10 +1,10 @@
-using CleanArchitectureCQRS.Application.Exceptions;
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Domain.Events;
-using CleanArchitectureCQRS.Domain.Exceptions;
-using CleanArchitectureCQRS.Domain.Factories;
-using CleanArchitectureCQRS.Domain.Policies;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Application.Exceptions;
+using SaveMe.Domain.Entities;
+using SaveMe.Domain.Events;
+using SaveMe.Domain.Exceptions;
+using SaveMe.Domain.Factories;
+using SaveMe.Domain.Policies;
+using SaveMe.Domain.ValueObjects;
 using Shouldly;
 
 namespace CleanArchitecture.CQRS.UnitTest.Domain;

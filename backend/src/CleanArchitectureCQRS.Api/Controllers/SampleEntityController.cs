@@ -1,12 +1,12 @@
-using CleanArchitectureCQRS.Application.Commands;
-using CleanArchitectureCQRS.Application.Commands.Handlers;
-using CleanArchitectureCQRS.Application.DTOs;
-using CleanArchitectureCQRS.Application.Queries;
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
-using CleanArchitectureCQRS.Shared.Abstractions.Queries;
+using SaveMe.Application.Commands;
+using SaveMe.Application.Commands.Handlers;
+using SaveMe.Application.DTOs;
+using SaveMe.Application.Queries;
+using SaveMe.Shared.Abstractions.Commands;
+using SaveMe.Shared.Abstractions.Queries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitectureCQRS.Api.Controllers;
+namespace SaveMe.Api.Controllers;
 
 public class SampleEntityController : BaseController
 {

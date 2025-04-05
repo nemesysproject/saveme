@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Shared.Abstractions.Exceptions;
+using SaveMe.Shared.Abstractions.Exceptions;
 
-namespace CleanArchitectureCQRS.Application.Exceptions;
+namespace SaveMe.Application.Exceptions;
 
     public class SampleEntityNotFound : PublicException
     {

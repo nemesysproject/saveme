@@ -1,8 +1,8 @@
-using CleanArchitectureCQRS.Infrastructure.EF.Config;
-using CleanArchitectureCQRS.Infrastructure.EF.Models;
+using SaveMe.Infrastructure.EF.Config;
+using SaveMe.Infrastructure.EF.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitectureCQRS.Infrastructure.EF.Contexts;
+namespace SaveMe.Infrastructure.EF.Contexts;
 
 internal sealed class ReadDbContext : DbContext
 {

@@ -1,7 +1,7 @@
-using CleanArchitectureCQRS.Application.DTOs;
-using CleanArchitectureCQRS.Shared.Abstractions.Queries;
+using SaveMe.Application.DTOs;
+using SaveMe.Shared.Abstractions.Queries;
 
-namespace CleanArchitectureCQRS.Application.Queries;
+namespace SaveMe.Application.Queries;
 
 public class SearchSampleEntity : IQuery<IEnumerable<SampleEntityDto>>
 {

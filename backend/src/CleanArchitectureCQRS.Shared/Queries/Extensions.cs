@@ -1,8 +1,8 @@
 using System.Reflection;
-using CleanArchitectureCQRS.Shared.Abstractions.Queries;
+using SaveMe.Shared.Abstractions.Queries;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Shared.Queries;
+namespace SaveMe.Shared.Queries;
 
     public static class Extensions
     {

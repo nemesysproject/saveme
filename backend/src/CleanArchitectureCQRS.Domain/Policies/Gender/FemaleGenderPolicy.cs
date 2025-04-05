@@ -1,6 +1,6 @@
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Policies.Gender;
+namespace SaveMe.Domain.Policies.Gender;
 
     internal sealed class FemaleGenderPolicy : ISampleEntityItemsPolicy
     {

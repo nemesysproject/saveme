@@ -1,7 +1,7 @@
-using CleanArchitectureCQRS.Shared.Abstractions.Commands;
+using SaveMe.Shared.Abstractions.Commands;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitectureCQRS.Shared.Commands;
+namespace SaveMe.Shared.Commands;
 
     internal sealed class InMemoryCommandDispatcher : ICommandDispatcher
     {

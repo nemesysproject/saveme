@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Application.Services;
+namespace SaveMe.Application.Services;
 
 public interface ISampleEntityReadService
 {

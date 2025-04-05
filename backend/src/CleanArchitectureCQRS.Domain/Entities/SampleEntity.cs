@@ -1,9 +1,9 @@
-using CleanArchitectureCQRS.Domain.Events;
-using CleanArchitectureCQRS.Domain.Exceptions;
-using CleanArchitectureCQRS.Domain.ValueObjects;
-using CleanArchitectureCQRS.Shared.Abstractions.Domains;
+using SaveMe.Domain.Events;
+using SaveMe.Domain.Exceptions;
+using SaveMe.Domain.ValueObjects;
+using SaveMe.Shared.Abstractions.Domains;
 
-namespace CleanArchitectureCQRS.Domain.Entities;
+namespace SaveMe.Domain.Entities;
 
     public class SampleEntity : AggregateRoot<SampleEntityId>
     {

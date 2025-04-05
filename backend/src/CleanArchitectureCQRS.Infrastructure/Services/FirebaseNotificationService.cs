@@ -1,5 +1,5 @@
 ﻿
-using CleanArchitectureCQRS.Shared.Abstractions.Interfaces;
+using SaveMe.Shared.Abstractions.Interfaces;
 using Firebase.Database;
 using FirebaseAdmin.Messaging;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitectureCQRS.Infrastructure.Services
+namespace SaveMe.Infrastructure.Services
 {
     public class FirebaseNotificationService : INotificationService
     {

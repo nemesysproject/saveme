@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Shared.Abstractions.Exceptions;
+namespace SaveMe.Shared.Abstractions.Exceptions;
 
     public abstract class PublicException : Exception
     {

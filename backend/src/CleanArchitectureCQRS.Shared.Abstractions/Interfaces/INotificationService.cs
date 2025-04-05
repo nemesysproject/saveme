@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitectureCQRS.Shared.Abstractions.Interfaces
+namespace SaveMe.Shared.Abstractions.Interfaces
 {
     public interface INotificationService
     {

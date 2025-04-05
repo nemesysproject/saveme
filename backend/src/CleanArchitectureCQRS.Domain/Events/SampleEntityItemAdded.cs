@@ -1,8 +1,8 @@
 
-using CleanArchitectureCQRS.Domain.Entities;
-using CleanArchitectureCQRS.Shared.Abstractions.Domains;
-using CleanArchitectureCQRS.Domain.ValueObjects;
+using SaveMe.Domain.Entities;
+using SaveMe.Shared.Abstractions.Domains;
+using SaveMe.Domain.ValueObjects;
 
-namespace CleanArchitectureCQRS.Domain.Events;
+namespace SaveMe.Domain.Events;
 
 public record SampleEntityItemAdded(SampleEntity sampleEntity, SampleEntityItem sampleEntityItem) : IDomainEvent;

@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Domain.ValueObjects;
+namespace SaveMe.Domain.ValueObjects;
 
     public record SampleEntityDestination(string City, string Country)
     {

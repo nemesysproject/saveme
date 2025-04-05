@@ -10,6 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CleanArchitectureCQRS.Shared\CleanArchitectureCQRS.Shared.csproj" />
-    <ProjectReference Include="..\CleanArchitectureCQRS.Domain\CleanArchitectureCQRS.Domain.csproj" />
+    <ProjectReference Include="..\CleanArchitectureCQRS.Domain\SaveMe.Domain.csproj" />
   </ItemGroup>
 </Project>

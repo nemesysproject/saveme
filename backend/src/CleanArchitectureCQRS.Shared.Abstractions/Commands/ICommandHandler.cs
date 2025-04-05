@@ -1,4 +1,4 @@
-namespace CleanArchitectureCQRS.Shared.Abstractions.Commands;
+namespace SaveMe.Shared.Abstractions.Commands;
 
     public interface ICommandHandler<in TCommand> where TCommand : class, ICommand
     {
