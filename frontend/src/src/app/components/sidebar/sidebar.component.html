@@ -1,0 +1,413 @@
+<!-- BEGIN #sidebar -->
+<div id="sidebar" class="app-sidebar" [class.collapsed]="collapsed">
+    <!-- BEGIN scrollbar -->
+    <div class="app-sidebar-content ps" data-scrollbar="true" data-height="100%" style="height: 100%;" data-init="true">
+        <!-- BEGIN menu -->
+        <div class="menu">
+            <div class="menu-header">Navigation</div>
+            <div class="menu-item active">
+                <a href="https://seantheme.com/hud/index.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-cpu"></i></span>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="https://seantheme.com/hud/analytics.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span class="menu-text">Analytics</span>
+                </a>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="bi bi-envelope"></i>
+                    </span>
+                    <span class="menu-text">Email</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/email_inbox.html" class="menu-link">
+                            <span class="menu-text">Inbox</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/email_compose.html" class="menu-link">
+                            <span class="menu-text">Compose</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/email_detail.html" class="menu-link">
+                            <span class="menu-text">Detail</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-header">Components</div>
+            <div class="menu-item">
+                <a href="https://seantheme.com/hud/widgets.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-columns-gap"></i></span>
+                    <span class="menu-text">Widgets</span>
+                </a>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon"><i class="bi bi-stars"></i></div>
+                    <div class="menu-text">AI Studio</div>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ai_chat.html" class="menu-link">
+                            <div class="menu-text">AI Chat</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ai_image_generator.html" class="menu-link">
+                            <div class="menu-text">AI Image Generator</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="javascript:;" class="menu-link">
+                    <div class="menu-icon">
+                        <i class="bi bi-bag-check"></i>
+                        <span class="w-5px h-5px rounded-3 bg-theme position-absolute top-0 end-0 mt-3px me-3px"></span>
+                    </div>
+                    <div class="menu-text d-flex align-items-center">POS System</div>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/pos_customer_order.html" target="_blank" class="menu-link">
+                            <div class="menu-text">Customer Order</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/pos_kitchen_order.html" target="_blank" class="menu-link">
+                            <div class="menu-text">Kitchen Order</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/pos_counter_checkout.html" target="_blank" class="menu-link">
+                            <div class="menu-text">Counter Checkout</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/pos_table_booking.html" target="_blank" class="menu-link">
+                            <div class="menu-text">Table Booking</div>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/pos_menu_stock.html" target="_blank" class="menu-link">
+                            <div class="menu-text">Menu Stock</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-controller"></i></span>
+                    <span class="menu-text">UI Kits</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_bootstrap.html" class="menu-link">
+                            <span class="menu-text">Bootstrap</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_buttons.html" class="menu-link">
+                            <span class="menu-text">Buttons</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_card.html" class="menu-link">
+                            <span class="menu-text">Card</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_icons.html" class="menu-link">
+                            <span class="menu-text">Icons</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_modal_notification.html" class="menu-link">
+                            <span class="menu-text">Modal &amp; Notification</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_typography.html" class="menu-link">
+                            <span class="menu-text">Typography</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/ui_tabs_accordions.html" class="menu-link">
+                            <span class="menu-text">Tabs &amp; Accordions</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-pen"></i></span>
+                    <span class="menu-text">Forms</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/form_elements.html" class="menu-link">
+                            <span class="menu-text">Form Elements</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/form_plugins.html" class="menu-link">
+                            <span class="menu-text">Form Plugins</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/form_wizards.html" class="menu-link">
+                            <span class="menu-text">Wizards</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-grid-3x3"></i></span>
+                    <span class="menu-text">Tables</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/table_elements.html" class="menu-link">
+                            <span class="menu-text">Table Elements</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/table_plugins.html" class="menu-link">
+                            <span class="menu-text">Table Plugins</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-pie-chart"></i></span>
+                    <span class="menu-text">Charts</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/chart_js.html" class="menu-link">
+                            <span class="menu-text">Chart.js</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/chart_apex.html" class="menu-link">
+                            <span class="menu-text">Apexcharts.js</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a href="https://seantheme.com/hud/map.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-compass"></i></span>
+                    <span class="menu-text">Map</span>
+                </a>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-layout-sidebar"></i></span>
+                    <span class="menu-text">Layout</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_starter.html" class="menu-link">
+                            <span class="menu-text">Starter Page</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_fixed_footer.html" class="menu-link">
+                            <span class="menu-text">Fixed Footer</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_full_height.html" class="menu-link">
+                            <span class="menu-text">Full Height</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_full_width.html" class="menu-link">
+                            <span class="menu-text">Full Width</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_boxed_layout.html" class="menu-link">
+                            <span class="menu-text">Boxed Layout</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_collapsed_sidebar.html" class="menu-link">
+                            <span class="menu-text">Collapsed Sidebar</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_top_nav.html" class="menu-link">
+                            <span class="menu-text">Top Nav</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_mixed_nav.html" class="menu-link">
+                            <span class="menu-text">Mixed Nav</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/layout_mixed_nav_boxed_layout.html" class="menu-link">
+                            <span class="menu-text">Mixed Nav Boxed Layout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item has-sub">
+                <a href="https://seantheme.com/hud/index.html#" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-collection"></i></span>
+                    <span class="menu-text">Pages</span>
+                    <span class="menu-caret"><b class="caret"></b></span>
+                </a>
+                <div class="menu-submenu">
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_scrum_board.html" class="menu-link">
+                            <span class="menu-text">Scrum Board</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_products.html" class="menu-link">
+                            <span class="menu-text">Products</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_product_details.html" class="menu-link">
+                            <span class="menu-text">Product Details</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_orders.html" class="menu-link">
+                            <span class="menu-text">Orders</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_order_details.html" class="menu-link">
+                            <span class="menu-text">Order Details</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_gallery.html" class="menu-link">
+                            <span class="menu-text">Gallery</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_search_results.html" class="menu-link">
+                            <span class="menu-text">Search Results</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_coming_soon.html" class="menu-link">
+                            <span class="menu-text">Coming Soon Page</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_404_error.html" class="menu-link">
+                            <span class="menu-text">404 Error Page</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_login.html" class="menu-link">
+                            <span class="menu-text">Login</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_register.html" class="menu-link">
+                            <span class="menu-text">Register</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_messenger.html" class="menu-link">
+                            <span class="menu-text">Messenger</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_data_management.html" class="menu-link">
+                            <span class="menu-text">Data Management</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_file_manager.html" class="menu-link">
+                            <span class="menu-text">File Manager</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a href="https://seantheme.com/hud/page_pricing_page.html" class="menu-link">
+                            <span class="menu-text">Pricing Page</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a href="" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-diagram-3"></i></span>
+                    <span class="menu-text">Landing Page</span>
+                </a>
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-header">Users</div>
+            <div class="menu-item">
+                <a href="" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-people"></i></span>
+                    <span class="menu-text">Profile</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-calendar4"></i></span>
+                    <span class="menu-text">Calendar</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="https://seantheme.com/hud/settings.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-gear"></i></span>
+                    <span class="menu-text">Settings</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="https://seantheme.com/hud/helper.html" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-gem"></i></span>
+                    <span class="menu-text">Helper</span>
+                </a>
+            </div>
+        </div>
+        <!-- END menu -->
+        <div class="p-3 px-4 mt-auto">
+            <a href="https://seantheme.com/hud/documentation/index.html" target="_blank"
+                class="btn d-block btn-outline-theme">
+                <i class="fa fa-code-branch me-2 ms-n2 opacity-5"></i> Documentation
+            </a>
+        </div>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; right: 0px;">
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+        </div>
+    </div>
+    <!-- END scrollbar -->
+</div>
+<!-- END #sidebar -->
+
+<!-- BEGIN mobile-sidebar-backdrop -->
+<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app"
+    data-toggle-class="app-sidebar-mobile-toggled"></button>
+<!-- END mobile-sidebar-backdrop -->
