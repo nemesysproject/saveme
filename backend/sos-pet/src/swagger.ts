@@ -1,33 +1,18 @@
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
-import { Express } from 'express';
-import { version } from '../package.json';
+import swaggerJSDoc from 'swagger-jsdoc';
 
-const options: swaggerJsdoc.Options = {
+const options = {
   definition: {
     openapi: '3.0.0',
     info: {
       title: 'SOS-Pet API',
-      version,
-      description:
-        'Documentación de la API para el backend del servicio SOS-Pet.',
+      version: '1.0.0',
+      description: 'Documentación de la API para el backend del servicio SOS-Pet.',
     },
-    servers: [
-      {
-        url: `http://localhost:${process.env.PORT || 3000}`,
-        description: 'Servidor de Desarrollo',
-      },
-    ],
   },
-  // Apunta a los archivos que contienen las definiciones de las rutas
-  apis: ['./src/routes/*.ts'],
+  apis: [
+    './src/api/routes/*.ts',        // <-- Asegúrate de que esta ruta es correcta
+    './src/api/controllers/*.ts'    // <-- Puedes agregar más rutas si tienes anotaciones en otros archivos
+  ],
 };
 
-const swaggerSpec = swaggerJsdoc(options);
-
-export function setupSwagger(app: Express) {
-  // Página de la UI de Swagger
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-  console.log(`[Swagger] Documentación disponible en http://localhost:${process.env.PORT || 3000}/api-docs`);
-}
+export const swaggerSpec = swaggerJSDoc(options);

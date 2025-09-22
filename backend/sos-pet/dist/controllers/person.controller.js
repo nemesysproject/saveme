@@ -33,8 +33,8 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPeopleHandler = void 0;
-const personQueries = __importStar(require("../api/queries/person.queries"));
+exports.deletePersonHandler = exports.updatePersonHandler = exports.createPersonHandler = exports.getPeopleHandler = void 0;
+const personQueries = __importStar(require("../api/queries/person.queries")); // Corrected path
 /**
  * Manejador para obtener todas las personas.
  */
@@ -49,3 +49,47 @@ const getPeopleHandler = async (req, res) => {
     }
 };
 exports.getPeopleHandler = getPeopleHandler;
+/**
+ * Manejador para crear una nueva persona.
+ */
+const createPersonHandler = async (req, res) => {
+    try {
+        const person = await personQueries.createPerson(req.body);
+        res.status(201).json(person);
+    }
+    catch (error) {
+        console.error('Error al crear la persona:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.createPersonHandler = createPersonHandler;
+/**
+ * Manejador para actualizar una persona existente.
+ */
+const updatePersonHandler = async (req, res) => {
+    try {
+        const idperson = BigInt(req.params.id);
+        const person = await personQueries.updatePerson(idperson, req.body);
+        res.status(200).json(person);
+    }
+    catch (error) {
+        console.error('Error al actualizar la persona:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.updatePersonHandler = updatePersonHandler;
+/**
+ * Manejador para eliminar una persona existente.
+ */
+const deletePersonHandler = async (req, res) => {
+    try {
+        const idperson = BigInt(req.params.id);
+        await personQueries.deletePerson(idperson);
+        res.status(204).send();
+    }
+    catch (error) {
+        console.error('Error al eliminar la persona:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.deletePersonHandler = deletePersonHandler;

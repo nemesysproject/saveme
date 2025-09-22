@@ -1,8 +1,11 @@
 import express, { Request, Response } from 'express';
 import { PrismaClient } from '../generated/prisma';
-import personRoutes from './routes/person.routes';
+import personRoutes from './api/routes/person.routes';
+import petRoutes from './api/routes/pet.routes';
+import shelterRoutes from './api/routes/shelter.routes';
 import cors from 'cors';
-import { setupSwagger } from './swagger';
+import { swaggerSpec } from './swagger';
+import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -20,10 +23,12 @@ app.get('/', (req: Request, res: Response) => {
 
 // Usamos las rutas de personas
 app.use('/api', personRoutes);
+app.use('/api', petRoutes);
+app.use('/api', shelterRoutes);
 
 // Configura Swagger solo en modo de desarrollo
 if (process.env.NODE_ENV === 'development') {
-  setupSwagger(app);
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
 
 app.listen(PORT, () => {
