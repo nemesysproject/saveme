@@ -4,80 +4,92 @@ const express_1 = require("express");
 //import { getPeopleHandler } from '../controllers/person.controller';
 const person_controller_1 = require("../controllers/person.controller");
 const router = (0, express_1.Router)();
-router.get('/people', person_controller_1.getPeopleHandler);
 /**
  * @openapi
- * /api/people:
- *   post:
- *     summary: Crea una nueva persona
- *     tags: [People]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 description: El nombre de la persona.
- *                 example: "John Doe"
- *     responses:
- *       201:
- *         description: Persona creada exitosamente.
- *       500:
- *         description: Error interno del servidor.
- */
-router.post('/people', person_controller_1.createPersonHandler);
-/**
- * @openapi
- * /api/people/{id}:
- *   put:
- *     summary: Actualiza una persona existente
- *     tags: [People]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: ID de la persona a actualizar
- *         schema:
- *           type: integer
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 description: El nombre de la persona.
- *                 example: "Jane Smith"
+ * /people:
+ *   get:
+ *     summary: Obtiene todas las personas
+ *     tags:
+ *       - Person
  *     responses:
  *       200:
- *         description: Persona actualizada exitosamente.
- *       500:
- *         description: Error interno del servidor.
+ *         description: Lista de personas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Person'
  */
-router.put('/people/:id', person_controller_1.updatePersonHandler);
+router.get('/people', person_controller_1.getAllPeopleController);
 /**
  * @openapi
- * /api/people/{id}:
- *   delete:
- *     summary: Elimina una persona existente
- *     tags: [People]
+ * /people:
+ *   post:
+ *     summary: Crea una nueva persona
+ *     tags:
+ *       - Person
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Person'
+ *     responses:
+ *       201:
+ *         description: Persona creada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Person'
+ */
+router.post('/people', person_controller_1.createPersonController);
+/**
+ * @openapi
+ * /people/{id}:
+ *   put:
+ *     summary: Actualiza una persona existente
+ *     tags:
+ *       - Person
  *     parameters:
  *       - in: path
  *         name: id
- *         required: true
- *         description: ID de la persona a eliminar
  *         schema:
- *           type: integer
+ *           type: string
+ *         required: true
+ *         description: ID de la persona
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Person'
+ *     responses:
+ *       200:
+ *         description: Persona actualizada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Person'
+ */
+router.put('/people/:id', person_controller_1.updatePersonController);
+/**
+ * @openapi
+ * /people/{id}:
+ *   delete:
+ *     summary: Elimina una persona
+ *     tags:
+ *       - Person
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID de la persona
  *     responses:
  *       204:
- *         description: Persona eliminada exitosamente.
- *       500:
- *         description: Error interno del servidor.
+ *         description: Persona eliminada correctamente
  */
-router.delete('/people/:id', person_controller_1.deletePersonHandler);
+router.delete('/people/:id', person_controller_1.deletePersonController);
 exports.default = router;

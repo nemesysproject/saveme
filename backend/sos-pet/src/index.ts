@@ -28,7 +28,7 @@ app.use('/api', shelterRoutes);
 
 // Configura Swagger solo en modo de desarrollo
 if (process.env.NODE_ENV === 'development') {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
 
 app.listen(PORT, () => {
