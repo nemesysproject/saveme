@@ -8,6 +8,7 @@ const prisma_1 = require("../generated/prisma");
 const person_routes_1 = __importDefault(require("./api/routes/person.routes"));
 const pet_routes_1 = __importDefault(require("./api/routes/pet.routes"));
 const shelter_routes_1 = __importDefault(require("./api/routes/shelter.routes"));
+const petkind_routes_1 = __importDefault(require("./api/routes/petkind.routes"));
 const cors_1 = __importDefault(require("cors"));
 const swagger_1 = require("./swagger");
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 app.use('/api', person_routes_1.default);
 app.use('/api', pet_routes_1.default);
 app.use('/api', shelter_routes_1.default);
+app.use('/api', petkind_routes_1.default);
 // Configura Swagger UI para que esté siempre disponible en desarrollo
 app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
 app.listen(PORT, () => {

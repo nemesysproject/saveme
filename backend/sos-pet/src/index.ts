@@ -3,6 +3,7 @@ import { PrismaClient } from '../generated/prisma';
 import personRoutes from './api/routes/person.routes';
 import petRoutes from './api/routes/pet.routes';
 import shelterRoutes from './api/routes/shelter.routes';
+import petkindRoutes from './api/routes/petkind.routes';
 import cors from 'cors';
 import { swaggerSpec } from './swagger';
 import swaggerUi from 'swagger-ui-express';
@@ -30,6 +31,7 @@ app.get('/', (req: Request, res: Response) => {
 app.use('/api', personRoutes);
 app.use('/api', petRoutes);
 app.use('/api', shelterRoutes);
+app.use('/api', petkindRoutes);
 
 // Configura Swagger UI para que esté siempre disponible en desarrollo
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

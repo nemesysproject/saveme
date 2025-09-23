@@ -46,7 +46,7 @@ model pet {
   idpet        BigInt            @id(map: "pk_pet") @unique(map: "pet_pk") @default(autoincrement())
   idkind       Int?           @db.SmallInt
   name         String?        @db.VarChar(255)
-  register     DateTime?      @db.Date
+  register     DateTime?      @default(now()) @db.Timestamp(6)
   adoption     adoption[]
   petkind      petkind?       @relation(fields: [idkind], references: [idkind], onDelete: Restrict, onUpdate: Restrict, map: "fk_pet_petkinds_petkind")
   petinshelter petinshelter[]

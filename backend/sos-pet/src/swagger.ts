@@ -26,9 +26,12 @@ const options: swaggerJsdoc.Options = {
           properties: {
             idperson: { type: 'string', description: 'ID de la persona (formato BigInt)', example: '1' },
             firstname: { type: 'string', example: 'John' },
+            middlename: { type: 'string', nullable: true, example: 'Fitzgerald' },
             lastname: { type: 'string', example: 'Doe' },
             email: { type: 'string', format: 'email', example: 'john.doe@example.com' },
-            phone: { type: 'string', example: '1234567890' },
+            phone: { type: 'string', nullable: true, example: '1234567890' },
+            register: { type: 'string', format: 'date-time', description: 'Fecha de registro' },
+            active: { type: 'boolean', example: true },
           },
         },
         CreatePersonDto: {
@@ -57,7 +60,8 @@ const options: swaggerJsdoc.Options = {
           properties: {
             idpet: { type: 'string', description: 'ID de la mascota (formato BigInt)', example: '101' },
             name: { type: 'string', example: 'Fido' },
-            idkind: { type: 'integer', example: 1, description: 'ID del tipo de animal (ej. 1 para Perro)' },
+            idkind: { type: 'integer', nullable: true, example: 1, description: 'ID del tipo de animal (ej. 1 para Perro)' },
+            register: { type: 'string', format: 'date-time', nullable: true, description: 'Fecha de registro' },
           },
         },
         CreatePetDto: {
@@ -85,6 +89,7 @@ const options: swaggerJsdoc.Options = {
             address: { type: 'string', example: '123 Main St' },
             phone: { type: 'string', example: '555-1234' },
             zip: { type: 'string', example: '90210' },
+            regster: { type: 'string', format: 'date-time', nullable: true, description: 'Fecha de registro' },
           },
         },
         CreateShelterDto: {
@@ -105,6 +110,46 @@ const options: swaggerJsdoc.Options = {
             phone: { type: 'string', example: '555-5678' },
             zip: { type: 'string', example: '90211' },
           },
+        },
+
+        // --- Petkind Schemas ---
+        Petkind: {
+          type: 'object',
+          properties: {
+            idkind: { type: 'integer', example: 1 },
+            kind: { type: 'string', example: 'Perro' },
+          },
+        },
+        CreatePetkindDto: {
+          type: 'object',
+          required: ['idkind', 'kind'],
+          properties: {
+            idkind: { type: 'integer', example: 10 },
+            kind: { type: 'string', example: 'Gato' },
+          },
+        },
+        UpdatePetkindDto: {
+          type: 'object',
+          properties: {
+            kind: { type: 'string', example: 'Conejo' },
+          },
+        },
+
+        // --- Generic Error Schemas ---
+        ErrorResponse: {
+          type: 'object',
+          properties: {
+            message: { type: 'string', example: 'Error interno del servidor.' },
+            error: { type: 'string', example: 'Detalles opcionales del error.' },
+          },
+          required: ['message'],
+        },
+        ClientErrorResponse: {
+          type: 'object',
+          properties: {
+            message: { type: 'string', example: 'El recurso no fue encontrado.' },
+          },
+          required: ['message'],
         },
       },
     },
