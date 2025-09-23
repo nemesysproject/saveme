@@ -6,7 +6,7 @@ const person_controller_1 = require("../controllers/person.controller");
 const router = (0, express_1.Router)();
 /**
  * @openapi
- * /people:
+ * /api/people:
  *   get:
  *     summary: Obtiene todas las personas
  *     tags:
@@ -24,7 +24,7 @@ const router = (0, express_1.Router)();
 router.get('/people', person_controller_1.getAllPeopleController);
 /**
  * @openapi
- * /people:
+ * /api/people:
  *   post:
  *     summary: Crea una nueva persona
  *     tags:
@@ -46,7 +46,7 @@ router.get('/people', person_controller_1.getAllPeopleController);
 router.post('/people', person_controller_1.createPersonController);
 /**
  * @openapi
- * /people/{id}:
+ * /api/people/{id}:
  *   put:
  *     summary: Actualiza una persona existente
  *     tags:
@@ -75,7 +75,7 @@ router.post('/people', person_controller_1.createPersonController);
 router.put('/people/:id', person_controller_1.updatePersonController);
 /**
  * @openapi
- * /people/{id}:
+ * /api/people/{id}:
  *   delete:
  *     summary: Elimina una persona
  *     tags:

@@ -28,7 +28,7 @@ app.use('/api', pet_routes_1.default);
 app.use('/api', shelter_routes_1.default);
 // Configura Swagger solo en modo de desarrollo
 if (process.env.NODE_ENV === 'development') {
-    app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
+    app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
 }
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

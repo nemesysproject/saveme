@@ -35,7 +35,9 @@ exports.createPersonController = createPersonController;
  */
 const updatePersonController = async (req, res) => {
     try {
+        console.log('Cuerpo de la solicitud:', req.body);
         const dto = req.body;
+        console.log('dto:', dto);
         const idperson = BigInt(req.params.id);
         const person = await (0, updatePerson_handdler_1.handleUpdatePerson)(idperson, dto);
         res.status(200).json(person);

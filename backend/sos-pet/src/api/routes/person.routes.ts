@@ -5,7 +5,7 @@ const router = Router();
 
 /**
  * @openapi
- * /people:
+ * /api/people:
  *   get:
  *     summary: Obtiene todas las personas
  *     tags:
@@ -24,7 +24,7 @@ router.get('/people', getAllPeopleController);
 
 /**
  * @openapi
- * /people:
+ * /api/people:
  *   post:
  *     summary: Crea una nueva persona
  *     tags:
@@ -47,7 +47,7 @@ router.post('/people', createPersonController);
 
 /**
  * @openapi
- * /people/{id}:
+ * /api/people/{id}:
  *   put:
  *     summary: Actualiza una persona existente
  *     tags:
@@ -77,7 +77,7 @@ router.put('/people/:id', updatePersonController);
 
 /**
  * @openapi
- * /people/{id}:
+ * /api/people/{id}:
  *   delete:
  *     summary: Elimina una persona
  *     tags:
@@ -94,5 +94,7 @@ router.put('/people/:id', updatePersonController);
  *         description: Persona eliminada correctamente
  */
 router.delete('/people/:id', deletePersonController);
+
+
 
 export default router;
