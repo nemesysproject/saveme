@@ -1,32 +1,41 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletePersonController = exports.updatePersonController = exports.createPersonController = exports.getAllPeopleController = void 0;
-const create_person_1 = require("../commands/create.person");
-const updatePerson_handdler_1 = require("../handlers/updatePerson.handdler");
-const deletePerson_handdler_1 = require("../handlers/deletePerson.handdler");
-const createPerson_handler_1 = require("../handlers/createPerson.handler");
-const getAllPeople_handdler_1 = require("../handlers/getAllPeople.handdler");
+const create_person_command_1 = require("../commands/create.person.command");
+const update_person_handdler_1 = require("../handlers/update.person.handdler");
+const delete_person_handdler_1 = require("../handlers/delete.person.handdler");
+const create_person_handler_1 = require("../handlers/create.person.handler");
+const get_all_people_handdler_1 = require("../handlers/get.all.people.handdler");
+const conflict_error_1 = require("../errors/conflict.error");
 /// Manejadores para las operaciones CRUD de 'person'
 const getAllPeopleController = async (_req, res) => {
     try {
-        const people = await (0, getAllPeople_handdler_1.handleGetAllPeople)();
+        const people = await (0, get_all_people_handdler_1.handleGetAllPeople)();
+        console.log('Personas:', people);
         res.json(people);
     }
     catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error al obtener las personas:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado.';
+        res.status(500).json({ message: 'Error interno del servidor.', error: errorMessage });
     }
 };
 exports.getAllPeopleController = getAllPeopleController;
 const createPersonController = async (req, res) => {
     try {
         const dto = req.body;
-        // Aquí puedes agregar validación del DTO si lo deseas
-        const command = new create_person_1.CreatePersonCommand(dto);
-        const person = await (0, createPerson_handler_1.handleCreatePerson)(command);
+        const command = new create_person_command_1.CreatePersonCommand(dto);
+        const person = await (0, create_person_handler_1.handleCreatePerson)(command);
         res.status(201).json(person);
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        if (error instanceof conflict_error_1.ConflictError) {
+            return res.status(409).json({ message: error.message });
+        }
+        // Para otros errores, podrías tener un manejo más genérico
+        console.error('Error al crear la persona:', error); // Mantén el log para depuración
+        const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado.';
+        res.status(500).json({ message: 'Error interno del servidor.', error: errorMessage });
     }
 };
 exports.createPersonController = createPersonController;
@@ -39,7 +48,7 @@ const updatePersonController = async (req, res) => {
         const dto = req.body;
         console.log('dto:', dto);
         const idperson = BigInt(req.params.id);
-        const person = await (0, updatePerson_handdler_1.handleUpdatePerson)(idperson, dto);
+        const person = await (0, update_person_handdler_1.handleUpdatePerson)(idperson, dto);
         res.status(200).json(person);
     }
     catch (error) {
@@ -54,7 +63,7 @@ exports.updatePersonController = updatePersonController;
 const deletePersonController = async (req, res) => {
     try {
         const idperson = BigInt(req.params.id);
-        await (0, deletePerson_handdler_1.handleDeletePerson)(idperson);
+        await (0, delete_person_handdler_1.handleDeletePerson)(idperson);
         res.status(204).send();
     }
     catch (error) {

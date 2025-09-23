@@ -1,46 +1,14 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPetsHandler = void 0;
-const petQueries = __importStar(require("../queries/pet.queries"));
+exports.deletePetController = exports.updatePetController = exports.createPetController = exports.getAllPetsController = void 0;
+const create_pet_command_1 = require("../commands/create.pet.command");
+const pet_handler_1 = require("../handlers/pet.handler");
 /**
  * Manejador para obtener todas las mascotas.
  */
-const getPetsHandler = async (req, res) => {
+const getAllPetsController = async (_req, res) => {
     try {
-        const pets = await petQueries.getAllPets();
+        const pets = await (0, pet_handler_1.handleGetAllPets)();
         res.status(200).json(pets);
     }
     catch (error) {
@@ -48,4 +16,42 @@ const getPetsHandler = async (req, res) => {
         res.status(500).json({ message: 'Error interno del servidor.' });
     }
 };
-exports.getPetsHandler = getPetsHandler;
+exports.getAllPetsController = getAllPetsController;
+const createPetController = async (req, res) => {
+    try {
+        const dto = req.body;
+        const command = new create_pet_command_1.CreatePetCommand(dto);
+        const pet = await (0, pet_handler_1.handleCreatePet)(command);
+        res.status(201).json(pet);
+    }
+    catch (error) {
+        console.error('Error al crear la mascota:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.createPetController = createPetController;
+const updatePetController = async (req, res) => {
+    try {
+        const dto = req.body;
+        const idpet = BigInt(req.params.id);
+        const pet = await (0, pet_handler_1.handleUpdatePet)(idpet, dto);
+        res.status(200).json(pet);
+    }
+    catch (error) {
+        console.error('Error al actualizar la mascota:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.updatePetController = updatePetController;
+const deletePetController = async (req, res) => {
+    try {
+        const idpet = BigInt(req.params.id);
+        await (0, pet_handler_1.handleDeletePet)(idpet);
+        res.status(204).send();
+    }
+    catch (error) {
+        console.error('Error al eliminar la mascota:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    }
+};
+exports.deletePetController = deletePetController;

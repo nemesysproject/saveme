@@ -1,37 +1,115 @@
-import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerJsdoc from 'swagger-jsdoc';
 
-const options = {
+const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
       title: 'SOS-Pet API',
       version: '1.0.0',
-      description: 'Documentación de la API para el backend del servicio SOS-Pet.',
+      description: 'API para la gestión de personas, mascotas y refugios para la aplicación SaveMe.',
+      contact: {
+        name: 'Equipo de Desarrollo',
+        email: 'dev@example.com',
+      },
     },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+        description: 'Servidor de Desarrollo',
+      },
+    ],
     components: {
       schemas: {
+        // --- Person Schemas ---
         Person: {
           type: 'object',
           properties: {
-            idperson: { type: 'string', example: '1' },
-            firstname: { type: 'string', example: 'Juan' },
-            middlename: { type: 'string', example: 'Carlos' },
-            lastname: { type: 'string', example: 'Pérez' },
-            email: { type: 'string', example: 'juan@example.com' },
-            phone: { type: 'string', example: '555-1234' },
-            register: { type: 'string', format: 'date', example: '2023-09-23' },
-            active: { type: 'boolean', example: true }
+            idperson: { type: 'string', description: 'ID de la persona (formato BigInt)', example: '1' },
+            firstname: { type: 'string', example: 'John' },
+            lastname: { type: 'string', example: 'Doe' },
+            email: { type: 'string', format: 'email', example: 'john.doe@example.com' },
+            phone: { type: 'string', example: '1234567890' },
           },
-          required: ['firstname', 'lastname']
-        }
-      }
-    }
-  },
+        },
+        CreatePersonDto: {
+          type: 'object',
+          required: ['firstname', 'lastname', 'email'],
+          properties: {
+            firstname: { type: 'string', example: 'Jane' },
+            lastname: { type: 'string', example: 'Doe' },
+            email: { type: 'string', format: 'email', example: 'jane.doe@example.com' },
+            phone: { type: 'string', example: '0987654321' },
+          },
+        },
+        UpdatePersonDto: {
+          type: 'object',
+          properties: {
+            firstname: { type: 'string', example: 'Jane' },
+            lastname: { type: 'string', example: 'Smith' },
+            email: { type: 'string', format: 'email', example: 'jane.smith@example.com' },
+            phone: { type: 'string', example: '1122334455' },
+          },
+        },
 
-  apis: [
-    './src/api/routes/*.ts',        // <-- Asegúrate de que esta ruta es correcta
-    './src/api/controllers/*.ts'    // <-- Puedes agregar más rutas si tienes anotaciones en otros archivos
-  ],
+        // --- Pet Schemas ---
+        Pet: {
+          type: 'object',
+          properties: {
+            idpet: { type: 'string', description: 'ID de la mascota (formato BigInt)', example: '101' },
+            name: { type: 'string', example: 'Fido' },
+            idkind: { type: 'integer', example: 1, description: 'ID del tipo de animal (ej. 1 para Perro)' },
+          },
+        },
+        CreatePetDto: {
+          type: 'object',
+          required: ['name'],
+          properties: {
+            name: { type: 'string', example: 'Fido' },
+            idkind: { type: 'integer', example: 1 },
+          },
+        },
+        UpdatePetDto: {
+          type: 'object',
+          properties: {
+            name: { type: 'string', example: 'Buddy' },
+            idkind: { type: 'integer', example: 1 },
+          },
+        },
+
+        // --- Shelter Schemas ---
+        Shelter: {
+          type: 'object',
+          properties: {
+            idshelter: { type: 'string', description: 'ID del refugio (formato BigInt)', example: '201' },
+            sheltername: { type: 'string', example: 'Happy Paws Shelter' },
+            address: { type: 'string', example: '123 Main St' },
+            phone: { type: 'string', example: '555-1234' },
+            zip: { type: 'string', example: '90210' },
+          },
+        },
+        CreateShelterDto: {
+          type: 'object',
+          required: ['sheltername'],
+          properties: {
+            sheltername: { type: 'string', example: 'Happy Paws Shelter' },
+            address: { type: 'string', example: '123 Main St' },
+            phone: { type: 'string', example: '555-1234' },
+            zip: { type: 'string', example: '90210' },
+          },
+        },
+        UpdateShelterDto: {
+          type: 'object',
+          properties: {
+            sheltername: { type: 'string', example: 'Happier Paws Shelter' },
+            address: { type: 'string', example: '456 Oak Ave' },
+            phone: { type: 'string', example: '555-5678' },
+            zip: { type: 'string', example: '90211' },
+          },
+        },
+      },
+    },
+  },
+  apis: ['./src/api/routes/*.ts'], // Ruta a los archivos que contienen las anotaciones de OpenAPI
 };
 
-export const swaggerSpec = swaggerJSDoc(options);
+export const swaggerSpec = swaggerJsdoc(options);

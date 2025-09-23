@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
+    "debug": "nodemon --exec node --inspect=0.0.0.0:9229 -r ts-node/register src/index.ts",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:pull": "prisma db pull",
@@ -28,7 +29,7 @@
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
     "cross-env": "^7.0.3",
-    "nodemon": "^3.1.4",
+    "nodemon": "^3.1.10",
     "prisma": "^6.16.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"

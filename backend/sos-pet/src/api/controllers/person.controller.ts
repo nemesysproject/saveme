@@ -1,19 +1,23 @@
 import { Request, Response } from 'express';
 
-import { CreatePersonCommand } from '../commands/create.person';
-import { handleUpdatePerson } from '../handlers/updatePerson.handdler';
-import { handleDeletePerson } from '../handlers/deletePerson.handdler';
+import { CreatePersonCommand } from '../commands/create.person.command';
+import { handleUpdatePerson } from '../handlers/update.person.handdler';
+import { handleDeletePerson } from '../handlers/delete.person.handdler';
 import { CreatePersonDto, UpdatePersonDto } from '../models/person-dto';
-import { handleCreatePerson } from '../handlers/createPerson.handler';
-import { handleGetAllPeople } from '../handlers/getAllPeople.handdler';
+import { handleCreatePerson } from '../handlers/create.person.handler';
+import { handleGetAllPeople } from '../handlers/get.all.people.handdler';
+import { ConflictError } from '../errors/conflict.error';
 
 /// Manejadores para las operaciones CRUD de 'person'
 export const getAllPeopleController = async (_req: Request, res: Response) => {
   try {
     const people = await handleGetAllPeople();
+    console.log('Personas:', people);
     res.json(people);
   } catch (error) {
-    res.status(500).json({ error: (error as Error).message });
+    console.error('Error al obtener las personas:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado.';
+    res.status(500).json({ message: 'Error interno del servidor.', error: errorMessage });
   }
 };
 
@@ -21,12 +25,17 @@ export const getAllPeopleController = async (_req: Request, res: Response) => {
 export const createPersonController = async (req: Request, res: Response) => {
   try {
     const dto: CreatePersonDto = req.body;
-    // Aquí puedes agregar validación del DTO si lo deseas
     const command = new CreatePersonCommand(dto);
     const person = await handleCreatePerson(command);
     res.status(201).json(person);
   } catch (error) {
-    res.status(400).json({ error: (error as Error).message });
+    if (error instanceof ConflictError) {
+      return res.status(409).json({ message: error.message });
+    }
+    // Para otros errores, podrías tener un manejo más genérico
+    console.error('Error al crear la persona:', error); // Mantén el log para depuración
+    const errorMessage = error instanceof Error ? error.message : 'Ocurrió un error inesperado.';
+    res.status(500).json({ message: 'Error interno del servidor.', error: errorMessage });
   }
 };
 

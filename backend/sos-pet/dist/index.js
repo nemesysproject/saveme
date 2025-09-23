@@ -11,6 +11,10 @@ const shelter_routes_1 = __importDefault(require("./api/routes/shelter.routes"))
 const cors_1 = __importDefault(require("cors"));
 const swagger_1 = require("./swagger");
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+// Solución para el error "Do not know how to serialize a BigInt" al usar res.json()
+BigInt.prototype.toJSON = function () {
+    return this.toString();
+};
 const app = (0, express_1.default)();
 const prisma = new prisma_1.PrismaClient();
 const PORT = process.env.PORT || 3000;
@@ -26,10 +30,8 @@ app.get('/', (req, res) => {
 app.use('/api', person_routes_1.default);
 app.use('/api', pet_routes_1.default);
 app.use('/api', shelter_routes_1.default);
-// Configura Swagger solo en modo de desarrollo
-if (process.env.NODE_ENV === 'development') {
-    app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
-}
+// Configura Swagger UI para que esté siempre disponible en desarrollo
+app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
