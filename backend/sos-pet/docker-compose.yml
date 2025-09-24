@@ -22,4 +22,26 @@ services:
       AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 2
       AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: true
     tty: true
+
+  sos-pet:
+    build: . # Indica a Docker Compose que construya la imagen desde el Dockerfile en el directorio actual
+    container_name: sos-pet-backend
+    ports:
+      - "3000:3000" # Mapea el puerto 3000 del contenedor al puerto 3000 del host
+    environment:
+      # Define variables de entorno para la aplicación Node.js
+      # El puerto de la aplicación, que coincide con el EXPOSE en el Dockerfile
+      - PORT=3000
+      # Aquí deberías configurar la URL de tu base de datos.
+      # Añade el secreto para firmar los JWT. ¡Usa un valor más seguro en producción!
+      - JWT_SECRET=tu-secreto-super-secreto-y-largo-para-jwt
+      # Si estás usando CosmosDB con la API de MongoDB, la URL podría ser similar a esta:
+      # - DATABASE_URL="mongodb://cosmosdb:10255/sos-pet-db?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@cosmosdb@"
+      # Si usas otra base de datos (ej. PostgreSQL), la URL sería diferente y necesitarías un servicio para esa DB.
+    depends_on:
+      - cosmosdb # Asegura que cosmosdb se inicie antes que la aplicación sos-pet
+    # Opcional: Si necesitas que los cambios en el código se reflejen sin reconstruir la imagen (solo para desarrollo)
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules # Excluye node_modules del volumen para evitar problemas de permisos y rendimiento
     stdin_open: true

@@ -9,9 +9,11 @@ const person_routes_1 = __importDefault(require("./api/routes/person.routes"));
 const pet_routes_1 = __importDefault(require("./api/routes/pet.routes"));
 const shelter_routes_1 = __importDefault(require("./api/routes/shelter.routes"));
 const petkind_routes_1 = __importDefault(require("./api/routes/petkind.routes"));
+const auth_routes_1 = __importDefault(require("./api/routes/auth.routes"));
 const cors_1 = __importDefault(require("cors"));
 const swagger_1 = require("./swagger");
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+require("dotenv/config"); // Carga las variables de entorno desde .env
 // Solución para el error "Do not know how to serialize a BigInt" al usar res.json()
 BigInt.prototype.toJSON = function () {
     return this.toString();
@@ -27,6 +29,8 @@ app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a la API de SOS-Pet!');
 });
+// Usamos las rutas de autenticación
+app.use('/api', auth_routes_1.default);
 // Usamos las rutas de personas
 app.use('/api', person_routes_1.default);
 app.use('/api', pet_routes_1.default);

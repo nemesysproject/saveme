@@ -19,7 +19,67 @@ const options: swaggerJsdoc.Options = {
       },
     ],
     components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          description: 'Autenticación JWT. Introduce el token con el prefijo "Bearer ". Ejemplo: "Bearer abc.xyz.123"',
+        },
+      },
       schemas: {
+        // --- Auth Schemas ---
+        LoginDto: {
+          type: 'object',
+          required: ['email', 'password'],
+          properties: {
+            email: { type: 'string', format: 'email', example: 'john.doe@example.com' },
+            password: { type: 'string', format: 'password', example: 'password123' },
+          },
+        },
+        RegisterDto: {
+          type: 'object',
+          required: ['email', 'password', 'firstname', 'lastname'],
+          properties: {
+            email: { type: 'string', format: 'email', example: 'jane.doe@example.com' },
+            password: { type: 'string', format: 'password', example: 'securePassword123' },
+            firstname: { type: 'string', example: 'Jane' },
+            lastname: { type: 'string', example: 'Doe' },
+            phone: { type: 'string', nullable: true, example: '1234567890' },
+          },
+        },
+        AuthResponse: {
+          type: 'object',
+          properties: {
+            message: { type: 'string', example: 'Login exitoso' },
+            token: {
+              type: 'string',
+              example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE2MjI1NDg4MjIsImV4cCI6MTYyMjU1MjQyMn0.fake-token',
+            },
+          },
+        },
+
+        // --- User & Role Schemas ---
+        Role: {
+          type: 'object',
+          properties: {
+            id: { type: 'string', description: 'ID del rol', example: '60c72b2f9b1d8e001f8e4c5e' },
+            name: { type: 'string', enum: ['ADMIN', 'USER'], example: 'USER' },
+          },
+        },
+        User: {
+          type: 'object',
+          properties: {
+            id: { type: 'string', description: 'ID del usuario', example: '60c72b2f9b1d8e001f8e4c5f' },
+            email: { type: 'string', format: 'email', example: 'john.doe@example.com' },
+            createdAt: { type: 'string', format: 'date-time' },
+            updatedAt: { type: 'string', format: 'date-time' },
+            role: {
+              $ref: '#/components/schemas/Role',
+            },
+          },
+        },
+
         // --- Person Schemas ---
         Person: {
           type: 'object',
@@ -28,10 +88,12 @@ const options: swaggerJsdoc.Options = {
             firstname: { type: 'string', example: 'John' },
             middlename: { type: 'string', nullable: true, example: 'Fitzgerald' },
             lastname: { type: 'string', example: 'Doe' },
-            email: { type: 'string', format: 'email', example: 'john.doe@example.com' },
             phone: { type: 'string', nullable: true, example: '1234567890' },
             register: { type: 'string', format: 'date-time', description: 'Fecha de registro' },
             active: { type: 'boolean', example: true },
+            user: {
+              $ref: '#/components/schemas/User',
+            },
           },
         },
         CreatePersonDto: {
@@ -150,6 +212,132 @@ const options: swaggerJsdoc.Options = {
             message: { type: 'string', example: 'El recurso no fue encontrado.' },
           },
           required: ['message'],
+        },
+      },
+    },
+    paths: {
+      '/api/auth/register': {
+        post: {
+          summary: 'Registra un nuevo usuario',
+          tags: ['Auth'],
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/RegisterDto',
+                },
+              },
+            },
+          },
+          responses: {
+            '201': {
+              description: 'Usuario registrado exitosamente, devuelve un token JWT.',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/AuthResponse',
+                  },
+                },
+              },
+            },
+            '400': { description: 'Datos de entrada inválidos.' },
+            '409': { description: 'El email ya está en uso.' },
+            '500': { description: 'Error interno del servidor.' },
+          },
+        },
+      },
+      '/api/auth/login': {
+        post: {
+          summary: 'Inicia sesión para obtener un token JWT',
+          tags: ['Auth'],
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  $ref: '#/components/schemas/LoginDto',
+                },
+              },
+            },
+          },
+          responses: {
+            '200': {
+              description: 'Login exitoso, devuelve un token JWT.',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/AuthResponse',
+                  },
+                },
+              },
+            },
+            '400': {
+              description: 'Datos de entrada inválidos (ej. falta el email).',
+            },
+            '401': {
+              description: 'Credenciales inválidas.',
+            },
+          },
+        },
+      },
+      '/api/auth/refresh': {
+        post: {
+          summary: 'Refresca un token JWT existente',
+          tags: ['Auth'],
+          security: [
+            {
+              BearerAuth: [],
+            },
+          ],
+          responses: {
+            '200': {
+              description: 'Token refrescado exitosamente.',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/AuthResponse',
+                  },
+                },
+              },
+            },
+            '401': {
+              description: 'No autorizado (token inválido, expirado o no proporcionado).',
+            },
+          },
+        },
+      },
+      '/api/auth/logout': {
+        post: {
+          summary: 'Cierra la sesión del usuario',
+          tags: ['Auth'],
+          security: [
+            {
+              BearerAuth: [],
+            },
+          ],
+          description: 'Invalida la sesión del lado del cliente. El cliente debe eliminar el token JWT de su almacenamiento local tras recibir una respuesta exitosa.',
+          responses: {
+            '200': {
+              description: 'Cierre de sesión exitoso.',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      message: {
+                        type: 'string',
+                        example: 'Cierre de sesión exitoso. El cliente debe descartar el token.',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+            '401': {
+              description: 'No autorizado.',
+            },
+          },
         },
       },
     },
