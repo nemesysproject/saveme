@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 declare global {
   namespace Express {
     interface Request {
-      user?: { id: string };
+      user?: { id: number; role: string };
     }
   }
 }
@@ -25,7 +25,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   }
 
   try {
-    const decoded = jwt.verify(token, secret) as { id: string };
+    const decoded = jwt.verify(token, secret) as { id: number; role: string };
     req.user = decoded; // Adjunta el payload del token a la solicitud
     next();
   } catch (error) {

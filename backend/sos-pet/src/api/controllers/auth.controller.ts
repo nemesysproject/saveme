@@ -90,16 +90,17 @@ export const loginController = async (req: Request, res: Response) => {
 
 export const refreshTokenController = async (req: Request, res: Response) => {
     // El authMiddleware ya ha verificado el token y ha adjuntado el payload del usuario en req.user
-    const userId = req.user?.id;
+    const user = req.user;
 
-    if (!userId) {
+    if (!user || !user.id || !user.role) {
         // Este caso es improbable si el middleware se ejecuta correctamente, pero es una buena práctica de seguridad.
         return res.status(401).json({ message: 'No se pudo identificar al usuario desde el token.' });
     }
 
     const secret = process.env.JWT_SECRET!;
     // Generamos un nuevo token con una nueva fecha de expiración
-    const token = jwt.sign({ id: userId }, secret, { expiresIn: '1h' });
+    // Es crucial incluir el rol de nuevo en el token refrescado
+    const token = jwt.sign({ id: user.id, role: user.role }, secret, { expiresIn: '1h' });
 
     res.json({ message: 'Token refrescado exitosamente', token });
 };
