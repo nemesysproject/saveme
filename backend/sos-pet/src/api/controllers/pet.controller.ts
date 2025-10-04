@@ -31,8 +31,8 @@ export const createPetController = async (req: Request, res: Response) => {
 export const updatePetController = async (req: Request, res: Response) => {
   try {
     const dto: UpdatePetDto = req.body;
-    const idpet = BigInt(req.params.id);
-    const pet = await handleUpdatePet(idpet, dto);
+    const id = Number(req.params.id);
+    const pet = await handleUpdatePet(id, dto);
     res.status(200).json(pet);
   } catch (error) {
     console.error('Error al actualizar la mascota:', error);
@@ -42,8 +42,8 @@ export const updatePetController = async (req: Request, res: Response) => {
 
 export const deletePetController = async (req: Request, res: Response) => {
   try {
-    const idpet = BigInt(req.params.id);
-    await handleDeletePet(idpet);
+    const id = Number(req.params.id);
+    await handleDeletePet(id);
     res.status(204).send();
   } catch (error) {
     console.error('Error al eliminar la mascota:', error);

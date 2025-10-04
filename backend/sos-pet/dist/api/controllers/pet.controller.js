@@ -33,8 +33,8 @@ exports.createPetController = createPetController;
 const updatePetController = async (req, res) => {
     try {
         const dto = req.body;
-        const idpet = BigInt(req.params.id);
-        const pet = await (0, pet_handler_1.handleUpdatePet)(idpet, dto);
+        const id = Number(req.params.id);
+        const pet = await (0, pet_handler_1.handleUpdatePet)(id, dto);
         res.status(200).json(pet);
     }
     catch (error) {
@@ -45,8 +45,8 @@ const updatePetController = async (req, res) => {
 exports.updatePetController = updatePetController;
 const deletePetController = async (req, res) => {
     try {
-        const idpet = BigInt(req.params.id);
-        await (0, pet_handler_1.handleDeletePet)(idpet);
+        const id = Number(req.params.id);
+        await (0, pet_handler_1.handleDeletePet)(id);
         res.status(204).send();
     }
     catch (error) {

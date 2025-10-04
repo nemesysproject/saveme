@@ -19,36 +19,36 @@ model Role {
 
 // Modelo para la autenticación de usuarios
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  password   String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  roleId     Int
-  role       Role     @relation(fields: [roleId], references: [id])
-  person     Person?
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  roleId    Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  person    Person?
 }
 
 // Modelo para la información personal, ahora vinculado a un Usuario
 model Person {
-  id         Int      @id @default(autoincrement())
+  id         Int             @id @default(autoincrement())
   firstname  String
   middlename String?
   lastname   String
   phone      String?
-  register   DateTime @default(now())
-  active     Boolean  @default(true)
-  userId     Int      @unique
-  user       User     @relation(fields: [userId], references: [id])
+  register   DateTime        @default(now())
+  active     Boolean         @default(true)
+  userId     Int             @unique
+  user       User            @relation(fields: [userId], references: [id])
   shelters   ShelterPerson[]
 }
 
 model Pet {
-  id       Int      @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   name     String
   idkind   Int?
   register DateTime? @default(now())
-  kind     Petkind? @relation(fields: [idkind], references: [idkind])
+  kind     Petkind?  @relation(fields: [idkind], references: [idkind])
 }
 
 model Petkind {
@@ -58,12 +58,12 @@ model Petkind {
 }
 
 model Shelter {
-  id          Int      @id @default(autoincrement())
+  id          Int             @id @default(autoincrement())
   sheltername String
   address     String?
   phone       String?
   zip         String?
-  register    DateTime? @default(now())
+  register    DateTime?       @default(now())
   people      ShelterPerson[]
 }
 

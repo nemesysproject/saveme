@@ -64,7 +64,7 @@ const options: swaggerJsdoc.Options = {
           type: 'object',
           properties: {
             id: { type: 'string', description: 'ID del rol', example: '60c72b2f9b1d8e001f8e4c5e' },
-            name: { type: 'string', enum: ['ADMIN', 'USER'], example: 'USER' },
+            name: { type: 'string', enum: ['ADMIN', 'USER', 'TESTER'], example: 'USER' },
           },
         },
         User: {
@@ -336,6 +336,78 @@ const options: swaggerJsdoc.Options = {
             },
             '401': {
               description: 'No autorizado.',
+            },
+          },
+        },
+      },
+      '/api/auth/google': {
+        get: {
+          summary: 'Inicia la autenticación con Google',
+          tags: ['Auth'],
+          description: 'Redirige al usuario a la pantalla de consentimiento de Google para iniciar sesión o registrarse. Este endpoint no devuelve JSON, sino que inicia una redirección 302.',
+          responses: {
+            '302': {
+              description: 'Redirección a la página de autenticación de Google.',
+            },
+            '500': {
+              description: 'Error de configuración del servidor (ej. variables de entorno de Google no configuradas).',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/ErrorResponse',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/api/auth/google/callback': {
+        get: {
+          summary: 'Callback para la autenticación con Google',
+          tags: ['Auth'],
+          description: 'Endpoint al que Google redirige después de una autenticación exitosa. Devuelve un token JWT para el usuario.',
+          responses: {
+            '200': {
+              description: 'Autenticación con Google exitosa, devuelve un token JWT.',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/AuthResponse',
+                  },
+                },
+              },
+            },
+            '401': {
+              description: 'Fallo en la autenticación con Google.',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/ClientErrorResponse',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/api-docs.json': {
+        get: {
+          summary: 'Descarga la especificación OpenAPI',
+          tags: ['Documentation'],
+          description: 'Obtiene la especificación completa de la API en formato JSON, compatible con OpenAPI 3.0.0.',
+          responses: {
+            '200': {
+              description: 'Especificación OpenAPI en formato JSON.',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    description: 'Un objeto que representa la especificación OpenAPI 3.0.0.',
+                    example: { openapi: '3.0.0', info: { title: 'SOS-Pet API', version: '1.0.0' } },
+                  },
+                },
+              },
             },
           },
         },

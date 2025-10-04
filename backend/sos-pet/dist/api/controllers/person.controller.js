@@ -47,8 +47,8 @@ const updatePersonController = async (req, res) => {
         console.log('Cuerpo de la solicitud:', req.body);
         const dto = req.body;
         console.log('dto:', dto);
-        const idperson = BigInt(req.params.id);
-        const person = await (0, update_person_handdler_1.handleUpdatePerson)(idperson, dto);
+        const id = Number(req.params.id);
+        const person = await (0, update_person_handdler_1.handleUpdatePerson)(id, dto);
         res.status(200).json(person);
     }
     catch (error) {
@@ -62,8 +62,8 @@ exports.updatePersonController = updatePersonController;
  */
 const deletePersonController = async (req, res) => {
     try {
-        const idperson = BigInt(req.params.id);
-        await (0, delete_person_handdler_1.handleDeletePerson)(idperson);
+        const id = Number(req.params.id);
+        await (0, delete_person_handdler_1.handleDeletePerson)(id);
         res.status(204).send();
     }
     catch (error) {

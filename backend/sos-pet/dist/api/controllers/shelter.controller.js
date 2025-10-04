@@ -33,8 +33,8 @@ exports.createShelterController = createShelterController;
 const updateShelterController = async (req, res) => {
     try {
         const dto = req.body;
-        const idshelter = BigInt(req.params.id);
-        const shelter = await (0, shelter_handler_1.handleUpdateShelter)(idshelter, dto);
+        const id = Number(req.params.id);
+        const shelter = await (0, shelter_handler_1.handleUpdateShelter)(id, dto);
         res.status(200).json(shelter);
     }
     catch (error) {
@@ -45,8 +45,8 @@ const updateShelterController = async (req, res) => {
 exports.updateShelterController = updateShelterController;
 const deleteShelterController = async (req, res) => {
     try {
-        const idshelter = BigInt(req.params.id);
-        await (0, shelter_handler_1.handleDeleteShelter)(idshelter);
+        const id = Number(req.params.id);
+        await (0, shelter_handler_1.handleDeleteShelter)(id);
         res.status(204).send();
     }
     catch (error) {

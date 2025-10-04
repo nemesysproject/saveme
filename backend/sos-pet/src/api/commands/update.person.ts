@@ -1,4 +1,4 @@
-import { PrismaClient, person } from '../../../generated/prisma';
+import { PrismaClient, Person } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -7,9 +7,9 @@ const prisma = new PrismaClient();
  * @param id ID de la persona a actualizar.
  * @param data Datos de la persona a actualizar.
  */
-export const updatePerson = (idperson: bigint, data: person) => {
+export const updatePerson = (id: number, data: Person) => {
   return prisma.person.update({
-    where: { idperson},
+    where: { id },
     data,
   });
 };

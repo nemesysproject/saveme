@@ -31,8 +31,8 @@ export const createShelterController = async (req: Request, res: Response) => {
 export const updateShelterController = async (req: Request, res: Response) => {
   try {
     const dto: UpdateShelterDto = req.body;
-    const idshelter = BigInt(req.params.id);
-    const shelter = await handleUpdateShelter(idshelter, dto);
+    const id = Number(req.params.id);
+    const shelter = await handleUpdateShelter(id, dto);
     res.status(200).json(shelter);
   } catch (error) {
     console.error('Error al actualizar el refugio:', error);
@@ -42,8 +42,8 @@ export const updateShelterController = async (req: Request, res: Response) => {
 
 export const deleteShelterController = async (req: Request, res: Response) => {
   try {
-    const idshelter = BigInt(req.params.id);
-    await handleDeleteShelter(idshelter);
+    const id = Number(req.params.id);
+    await handleDeleteShelter(id);
     res.status(204).send();
   } catch (error) {
     console.error('Error al eliminar el refugio:', error);

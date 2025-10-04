@@ -7,7 +7,7 @@ import {
   handleGetAllPetkinds,
   handleUpdatePetkind,
 } from '../handlers/petkind.handler';
-import { Prisma } from '../../../generated/prisma';
+import { Prisma } from '@prisma/client';
 import { NotFoundError } from '../errors/not-found.error';
 
 export const getAllPetkindsController = async (_req: Request, res: Response) => {

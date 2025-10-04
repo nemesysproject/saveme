@@ -1,8 +1,8 @@
 export interface CreatePersonDto {
-  firstname?: string;
+  firstname: string;
   middlename?: string;
-  lastname?: string;
-  email?: string;
+  lastname: string;
+  email: string;
   phone?: string;
   register?: Date;
   active?: boolean;

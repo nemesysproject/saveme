@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import { CreatePetCommand } from '../commands/create.pet.command';
 import { UpdatePetDto } from '../models/pet-dto';
 
@@ -23,15 +23,15 @@ export const handleCreatePet = async (command: CreatePetCommand) => {
   });
 };
 
-export const handleUpdatePet = async (id: bigint, dto: UpdatePetDto) => {
+export const handleUpdatePet = async (id: number, dto: UpdatePetDto) => {
   return await prisma.pet.update({
-    where: { idpet: id },
+    where: { id },
     data: dto,
   });
 };
 
-export const handleDeletePet = async (id: bigint) => {
+export const handleDeletePet = async (id: number) => {
   await prisma.pet.delete({
-    where: { idpet: id },
+    where: { id },
   });
 };

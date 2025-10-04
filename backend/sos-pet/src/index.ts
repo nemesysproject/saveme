@@ -38,6 +38,12 @@ app.use('/api', petRoutes);
 app.use('/api', shelterRoutes);
 app.use('/api', petkindRoutes);
 
+// Ruta para servir la especificación de Swagger en formato JSON
+app.get('/api-docs.json', (req: Request, res: Response) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
 // Configura Swagger UI para que esté siempre disponible en desarrollo
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

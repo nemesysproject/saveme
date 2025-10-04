@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model adoption {
+  idadoption     BigInt          @id(map: "pk_adoption") @unique(map: "adoption_pk") @default(autoincrement())
+  idperson       BigInt?
+  idpet          BigInt?
+  idstatus       Int?            @db.SmallInt
+  adoptiodate    DateTime?       @db.Date
+  adoptionstatus adoptionstatus? @relation(fields: [idstatus], references: [idstatus], onDelete: Restrict, onUpdate: Restrict, map: "fk_adoption_adopstati_adoption")
+  person         person?         @relation(fields: [idperson], references: [idperson], onDelete: Restrict, onUpdate: Restrict, map: "fk_adoption_personado_person")
+  pet            pet?            @relation(fields: [idpet], references: [idpet], onDelete: Restrict, onUpdate: Restrict, map: "fk_adoption_petadopti_pet")
+
+  @@index([idstatus], map: "adopstatis_fk")
+  @@index([idperson], map: "personadoprtion_fk")
+  @@index([idpet], map: "petadoptions_fk")
+}
+
+model adoptionstatus {
+  idstatus Int        @id(map: "pk_adoptionstatus") @unique(map: "adoptionstatus_pk") @db.SmallInt
+  status   String?    @db.VarChar(255)
+  adoption adoption[]
+}
+
+model person {
+  idperson   BigInt      @id(map: "pk_person") @unique(map: "person_pk") @default(autoincrement())
+  firstname  String      @db.VarChar(255)
+  middlename String?     @db.VarChar(255)
+  lastname   String      @db.VarChar(255)
+  email      String      @unique @db.VarChar(255)
+  phone      String?     @db.VarChar(255)
+  register   DateTime    @default(now()) @db.Timestamp(6)
+  active     Boolean     @default(true)
+  adoption   adoption[]
+  viewplace  viewplace[]
+}
+
+model pet {
+  idpet        BigInt         @id(map: "pk_pet") @unique(map: "pet_pk") @default(autoincrement())
+  idkind       Int?           @db.SmallInt
+  name         String?        @db.VarChar(255)
+  register     DateTime?      @default(now()) @db.Timestamp(6)
+  adoption     adoption[]
+  petkind      petkind?       @relation(fields: [idkind], references: [idkind], onDelete: Restrict, onUpdate: Restrict, map: "fk_pet_petkinds_petkind")
+  petinshelter petinshelter[]
+  petmedia     petmedia[]
+  viewplace    viewplace[]
+
+  @@index([idkind], map: "petkinds_fk")
+}
+
+model petinshelter {
+  idshelter   BigInt
+  idpet       BigInt
+  observation String?   @db.VarChar(255)
+  checkin     DateTime? @db.Date
+  checkout    DateTime? @db.Date
+  pet         pet       @relation(fields: [idpet], references: [idpet], onUpdate: Restrict, map: "fk_petinshe_petchek_pet")
+  shelter     shelter   @relation(fields: [idshelter], references: [idshelter], onUpdate: Restrict, map: "fk_petinshe_shelterch_shelter")
+
+  @@id([idshelter, idpet], map: "pk_petinshelter")
+  @@unique([idshelter, idpet], map: "petinshelter_pk")
+  @@index([idpet], map: "petchek_fk")
+}
+
+model petkind {
+  idkind Int     @id(map: "pk_petkind") @unique(map: "petkind_pk") @db.SmallInt
+  kind   String? @db.VarChar(255)
+  pet    pet[]
+}
+
+model petmedia {
+  idmedia  BigInt    @id(map: "pk_petmedia") @unique(map: "petmedia_pk") @default(autoincrement())
+  idpet    BigInt?
+  register DateTime? @db.Date
+  urlmedia String?   @db.VarChar(255)
+  pet      pet?      @relation(fields: [idpet], references: [idpet], onDelete: Restrict, onUpdate: Restrict, map: "fk_petmedia_petmedias_pet")
+
+  @@index([idpet], map: "petmedias_fk")
+}
+
+model shelter {
+  idshelter    BigInt         @id(map: "pk_shelter") @unique(map: "shelter_pk") @default(autoincrement())
+  sheltername  String?        @db.VarChar(255)
+  address      String?        @db.VarChar(255)
+  phone        String?        @db.VarChar(255)
+  zip          String?        @db.VarChar(10)
+  regster      DateTime?      @db.Date
+  petinshelter petinshelter[]
+}
+
+model viewplace {
+  idviewed   BigInt    @id(map: "pk_viewplace") @unique(map: "viewplace_pk") @default(autoincrement())
+  idpet      BigInt?
+  idperson   BigInt?
+  coordenate String?   @db.VarChar(100)
+  register   DateTime? @db.Date
+  urlmedia   String?   @db.VarChar(255)
+  person     person?   @relation(fields: [idperson], references: [idperson], onDelete: Restrict, onUpdate: Restrict, map: "fk_viewplac_personrep_person")
+  pet        pet?      @relation(fields: [idpet], references: [idpet], onDelete: Restrict, onUpdate: Restrict, map: "fk_viewplac_petviews_pet")
+
+  @@index([idperson], map: "personreportview_fk")
+  @@index([idpet], map: "petviews_fk")
+}

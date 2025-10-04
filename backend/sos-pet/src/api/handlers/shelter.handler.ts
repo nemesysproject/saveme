@@ -1,4 +1,4 @@
-import { PrismaClient } from '../../../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import { CreateShelterCommand } from '../commands/create.shelter.command';
 import { UpdateShelterDto } from '../models/shelter-dto';
 
@@ -25,15 +25,15 @@ export const handleCreateShelter = async (command: CreateShelterCommand) => {
   });
 };
 
-export const handleUpdateShelter = async (id: bigint, dto: UpdateShelterDto) => {
+export const handleUpdateShelter = async (id: number, dto: UpdateShelterDto) => {
   return await prisma.shelter.update({
-    where: { idshelter: id },
+    where: { id: id },
     data: dto,
   });
 };
 
-export const handleDeleteShelter = async (id: bigint) => {
+export const handleDeleteShelter = async (id: number) => {
   await prisma.shelter.delete({
-    where: { idshelter: id },
+    where: { id: id },
   });
 };

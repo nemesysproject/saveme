@@ -36,6 +36,11 @@ app.use('/api', person_routes_1.default);
 app.use('/api', pet_routes_1.default);
 app.use('/api', shelter_routes_1.default);
 app.use('/api', petkind_routes_1.default);
+// Ruta para servir la especificación de Swagger en formato JSON
+app.get('/api-docs.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swagger_1.swaggerSpec);
+});
 // Configura Swagger UI para que esté siempre disponible en desarrollo
 app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
 app.listen(PORT, () => {

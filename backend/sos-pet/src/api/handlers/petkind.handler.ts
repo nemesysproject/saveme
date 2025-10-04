@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from '../../../generated/prisma';
+import { Prisma, PrismaClient } from '@prisma/client';
 import { CreatePetkindCommand } from '../commands/create.petkind.command';
 import { UpdatePetkindDto } from '../models/petkind-dto';
 import { NotFoundError } from '../errors/not-found.error';
